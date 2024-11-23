@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "OXk2d3fCCUA=",
+  "dgSpecHash": "Zb2nuiR5VKA=",
   "success": true,
   "projectFilePath": "C:\\Users\\Nicolas\\source\\repos\\ListaTarefas\\ListaTarefas\\ListaTarefas.csproj",
   "expectedPackageFiles": [
@@ -137,6 +137,7 @@
     "C:\\Users\\Nicolas\\.nuget\\packages\\nuget.projectmodel\\6.11.0\\nuget.projectmodel.6.11.0.nupkg.sha512",
     "C:\\Users\\Nicolas\\.nuget\\packages\\nuget.protocol\\6.11.0\\nuget.protocol.6.11.0.nupkg.sha512",
     "C:\\Users\\Nicolas\\.nuget\\packages\\nuget.versioning\\6.11.0\\nuget.versioning.6.11.0.nupkg.sha512",
+    "C:\\Users\\Nicolas\\.nuget\\packages\\pagedlist.core\\1.17.4\\pagedlist.core.1.17.4.nupkg.sha512",
     "C:\\Users\\Nicolas\\.nuget\\packages\\pomelo.entityframeworkcore.mysql\\8.0.2\\pomelo.entityframeworkcore.mysql.8.0.2.nupkg.sha512",
     "C:\\Users\\Nicolas\\.nuget\\packages\\sqlitepclraw.bundle_e_sqlite3\\2.1.6\\sqlitepclraw.bundle_e_sqlite3.2.1.6.nupkg.sha512",
     "C:\\Users\\Nicolas\\.nuget\\packages\\sqlitepclraw.core\\2.1.6\\sqlitepclraw.core.2.1.6.nupkg.sha512",

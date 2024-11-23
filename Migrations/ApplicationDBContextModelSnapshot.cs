@@ -94,6 +94,9 @@ namespace ListaTarefas.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("CaminhoArquivo")
+                        .HasColumnType("longtext");
+
                     b.Property<string>("Categoria")
                         .IsRequired()
                         .HasMaxLength(16)
@@ -102,8 +105,8 @@ namespace ListaTarefas.Migrations
                     b.Property<bool>("Completa")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<DateOnly>("DataVencimento")
-                        .HasColumnType("date");
+                    b.Property<DateTime>("DataVencimento")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Descricao")
                         .IsRequired()

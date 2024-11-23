@@ -1,19 +1,18 @@
-﻿﻿@using System.Security.Claims
+﻿@using System.Security.Claims
 @model ListaTarefas.Models.Item
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Editar";
 }
 
-<h1>Edit</h1>
+<h1>Editar Tarefa</h1>
 
-<h4>Item</h4>
+<h4>Tarefa</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit">
+        <form asp-action="Edit" method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
             <div class="form-group">
                 <label asp-for="Nome" class="control-label"></label>
                 <input asp-for="Nome" class="form-control" />
@@ -50,23 +49,44 @@
                 <input asp-for="DataVencimento" class="form-control" />
                 <span asp-validation-for="DataVencimento" class="text-danger"></span>
             </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Completa" /> @Html.DisplayNameFor(model => model.Completa)
-                </label>
+
+            <div class="form-group">
+                <label for="arquivo">Anexo (opcional)</label>
+                <input type="file" id="arquivo" name="arquivo" />
+                <span asp-validation-for="CaminhoArquivo" class="text-danger"></span>
             </div>
+
+            @if (!string.IsNullOrEmpty(Model.CaminhoArquivo))
+            {
+                <div class="form-group">
+                    <p>Arquivo atual: <a href="@Url.Content("~/" + Model.CaminhoArquivo)" target="_blank">Baixar arquivo atual</a></p>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="true" id="removerArquivo" name="removerArquivo">
+                        <label class="form-check-label" for="removerArquivo">
+                            Remover arquivo atual
+                        </label>
+                    </div>
+                </div>
+            }
+
             <div class="form-group">
                 <input asp-for="iduser" type="hidden" value="@User.FindFirst(ClaimTypes.NameIdentifier).Value" class="form-control" />
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <span asp-validation-for="iduser" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Salvar" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Voltar para lista</a>
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

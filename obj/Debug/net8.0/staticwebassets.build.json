@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "sPLGmy/iiPvZw1thd6MoNZlaa+kWyld4M6LtTB44ON8=",
+  "Hash": "wJ9/nF6N08wEqKsigV8x/lyLJhFuWIZdrgrZklMchgo=",
   "Source": "ListaTarefas",
   "BasePath": "_content/ListaTarefas",
   "Mode": "Default",
@@ -2086,6 +2086,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\Background.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Nicolas\\source\\repos\\ListaTarefas\\ListaTarefas\\wwwroot\\images\\bg-callout.jpg",
+      "SourceId": "ListaTarefas",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Nicolas\\source\\repos\\ListaTarefas\\ListaTarefas\\wwwroot\\",
+      "BasePath": "_content/ListaTarefas",
+      "RelativePath": "images/bg-callout.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\bg-callout.jpg"
     },
     {
       "Identity": "C:\\Users\\Nicolas\\source\\repos\\ListaTarefas\\ListaTarefas\\wwwroot\\images\\close_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg",

@@ -118,3 +118,7 @@ nav svg {
         z-index: 9;
     }
 }
+.toast-top-right {
+    top: 10px;
+    left: 10px;
+}

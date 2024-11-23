@@ -1,53 +1,127 @@
-﻿@model IEnumerable<ListaTarefas.Models.Item>
+﻿@model PagedList.Core.IPagedList<ListaTarefas.Models.Item>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Lista de Tarefas";
+    var tarefasProximas = ViewData["TarefasProximas"] as List<ListaTarefas.Models.Item>;
+    var tarefasVencidas = ViewData["TarefasVencidas"] as List<ListaTarefas.Models.Item>;
 }
 
-<h1>Index</h1>
+<h2>Tarefas</h2>
+
+<script>
+    @if (tarefasVencidas != null && tarefasVencidas.Any())
+    {
+        <text>   
+               
+            @foreach (var tarefa in tarefasVencidas)
+            {
+                <text>
+                        toastr.info('@tarefa.Nome (Data de Vencimento: @tarefa.DataVencimento.ToString("dd/MM/yyyy"))');
+                </text>
+            }
+
+                toastr.error('Existem tarefas que já passaram do prazo de vencimento:');
+
+        </text>
+    }
+
+        // Usando setTimeout para esperar as tarefas vencidas desaparecerem antes de mostrar as tarefas próximas
+    @if (tarefasProximas != null && tarefasProximas.Any())
+    {
+        <text>
+                setTimeout(function() {
+            @foreach (var tarefa in tarefasProximas)
+            {
+                <text>
+                        toastr.info('@tarefa.Nome (Data de Vencimento: @tarefa.DataVencimento.ToString("dd/MM/yyyy"))');
+                </text>
+            }
+                toastr.warning('Existem tarefas próximas do vencimento:');
+                            }, 6000); // 5000ms (5 segundos) para aguardar as tarefas vencidas desaparecerem
+        </text>
+    }
+</script>
+
 
 <p>
     <a asp-action="Create">Criar Nova Tarefa</a>
 </p>
-<table class="table">
+
+<form method="get" asp-action="Index">
+    <div>
+        <label for="nome">Nome:</label>
+        <input type="text" name="nome" id="nome" value="@ViewData["nome"]" />
+
+        <label for="categoria">Categoria:</label>
+        <select name="categoria" id="categoria" value="@ViewData["categoria"]">
+            <option disabled selected>--Selecione a Categoria--</option>
+            <option>Trabalho</option>
+            <option>Pessoal</option>
+            <option>Estudos</option>
+            <option>Doméstico</option>
+        </select>
+
+        <label for="prioridade">Prioridade:</label>
+        <select name="prioridade" id="prioridade" value="@ViewData["prioridade"]">
+            <option disabled selected>--Nível de Prioridade--</option>
+            <option>Baixa</option>
+            <option>Media</option>
+            <option>Alta</option>
+        </select>
+
+        <label for="completa">Concluída:</label>
+        <select name="completa" id="completa">
+            <option value="">Todos</option>
+            <option value="true">Sim</option>
+            <option value="false">Não</option>
+        </select>
+
+        <button type="submit">Filtrar</button>
+    </div>
+</form>
+
+<table>
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Nome)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Prioridade)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DataVencimento)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Completa)
-            </th>
-            <th></th>
+            <th>Nome</th>
+            <th>Descrição</th>
+            <th>Categoria</th>
+            <th>Prioridade</th>
+            <th>Data de Vencimento</th>
+            <th>Concluída</th>
+            <th>Ações</th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Prioridade)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DataVencimento)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Completa)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Detalhes</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Deletar</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Nome</td>
+                <td>@item.Descricao</td>
+                <td>@item.Categoria</td>
+                <td>@item.Prioridade</td>
+                <td>@item.DataVencimento.ToShortDateString()</td>
+                <td><input type="checkbox" disabled="disabled" @(item.Completa ? "checked" : "") /></td>
+
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Excluir</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+
+<div>
+    @if (Model.HasPreviousPage)
+    {
+        <a asp-action="Index" asp-route-page="@(Model.PageNumber - 1)">Anterior</a>
+    }
+
+    Página @(Model.PageNumber) de @(Model.PageCount)
+
+    @if (Model.HasNextPage)
+    {
+        <a asp-action="Index" asp-route-page="@(Model.PageNumber + 1)">Próxima</a>
+    }
+</div>

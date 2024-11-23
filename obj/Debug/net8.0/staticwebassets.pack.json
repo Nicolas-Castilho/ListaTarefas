@@ -193,6 +193,10 @@
       "PackagePath": "staticwebassets\\images\\Background.jpg"
     },
     {
+      "Id": "C:\\Users\\Nicolas\\source\\repos\\ListaTarefas\\ListaTarefas\\wwwroot\\images\\bg-callout.jpg",
+      "PackagePath": "staticwebassets\\images\\bg-callout.jpg"
+    },
+    {
       "Id": "C:\\Users\\Nicolas\\source\\repos\\ListaTarefas\\ListaTarefas\\wwwroot\\images\\close_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg",
       "PackagePath": "staticwebassets\\images\\close_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg"
     },

@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ListaTarefas.Migrations
 {
     /// <inheritdoc />
-    public partial class init : Migration
+    public partial class Init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -83,8 +83,10 @@ namespace ListaTarefas.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Prioridade = table.Column<string>(type: "varchar(5)", maxLength: 5, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    DataVencimento = table.Column<DateOnly>(type: "date", nullable: false),
+                    DataVencimento = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     Completa = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    CaminhoArquivo = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     iduser = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },

@@ -18,8 +18,9 @@ namespace ListaTarefas.Models
         [Required(ErrorMessage = "Você precisa escolher um nível de prioridade")]
         [StringLength(5)]
         public string Prioridade { get; set; }
-        public DateOnly DataVencimento { get; set; }
+        public DateTime DataVencimento { get; set; }
         public bool Completa {  get; set; }
+        public string? CaminhoArquivo { get; set; }
         public string iduser { get; set; }
 
     }

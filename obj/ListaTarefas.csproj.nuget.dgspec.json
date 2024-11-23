@@ -72,6 +72,10 @@
               "target": "Package",
               "version": "[8.0.6, )"
             },
+            "PagedList.Core": {
+              "target": "Package",
+              "version": "[1.17.4, )"
+            },
             "Pomelo.EntityFrameworkCore.MySql": {
               "target": "Package",
               "version": "[8.0.2, )"

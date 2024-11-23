@@ -235,7 +235,6 @@ namespace ListaTarefas.Controllers
                     }
                     else
                     {
-                        // Preserva o caminho do arquivo existente se nenhum arquivo novo foi enviado e o usuário não marcou para remover
                         item.CaminhoArquivo = itemAtual.CaminhoArquivo;
                     }
 
